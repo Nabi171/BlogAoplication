@@ -6,8 +6,10 @@ import RelatedPost from '../Grid/RelatedPost';
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPost } from '../../features/post/postSlice';
+import { fetchPosts } from '../../features/posts/postsSlice';
 
 const VideoGrid = () => {
+    //loading singlePost
     const { post, isLoading, isError, error } = useSelector(
         (state) => state.post
     );
@@ -16,6 +18,17 @@ const VideoGrid = () => {
     useEffect(() => {
         dispatch(fetchPost(id));
     }, [dispatch, id]);
+
+    // loading multiple post
+    const { posts } = useSelector(
+        (state) => state.posts
+    );
+
+    useEffect(() => {
+        dispatch(fetchPosts());
+    }, [dispatch]);
+
+
 
 
     let content = null;
@@ -36,7 +49,10 @@ const VideoGrid = () => {
                     <DetailPost post={post} />
                     {/* <!-- detailed post ends --> */}
                     {/* <!-- related posts --> */}
-                    <RelatedPost post={post} />
+
+
+
+                    <RelatedPost posts={posts} />
                     {/* <!-- related posts ends --> */}
                 </section>
             </div>
