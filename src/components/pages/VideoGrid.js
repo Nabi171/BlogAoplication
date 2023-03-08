@@ -36,7 +36,7 @@ const VideoGrid = () => {
                     <DetailPost post={post} />
                     {/* <!-- detailed post ends --> */}
                     {/* <!-- related posts --> */}
-                    <RelatedPost />
+                    <RelatedPost post={post} />
                     {/* <!-- related posts ends --> */}
                 </section>
             </div>

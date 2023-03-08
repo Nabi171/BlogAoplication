@@ -8,7 +8,7 @@ const SideCard = () => {
     const { posts, isLoading, isError, error } = useSelector(
         (state) => state.posts
     );
-
+    // console.log(posts)
     useEffect(() => {
         dispatch(fetchPosts());
     }, [dispatch]);

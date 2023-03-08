@@ -1,16 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { Link, useNavigate } from 'react-router-dom';
 
 const SideBar = () => {
+    const [selectedOption, setSelectedOption] = useState('');
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+
+    }
+    const handleClick2 = () => {
+        navigate('/home');
+
+    }
+    function handleOptionSelect(event) {
+        // event.preventDefault();
+
+        setSelectedOption(event.target.value);
+        if (event.target.value == "most_liked") {
+            navigate('/hometwo');
+        }
+        if (event.target.value == "default") {
+            navigate('/home');
+        }
+        if (event.target.value == "newest") {
+            navigate('/');
+        }
+        console.log(selectedOption)
+        console.log(event.target.value)
+        // window.location.reload();
+        // perform some action or update state based on the selected option
+    }
+
+
+
     return (
         <div>
             <aside>
                 <div className="sidebar-items">
                     <div className="sidebar-content">
                         <h4>Sort</h4>
-                        <select name="sort" id="lws-sort" className="w-full max-w-[150px] border-2 rounded-md text-gray-500">
-                            <option value="">Default</option>
+                        <select
+                            value={selectedOption} onChange={handleOptionSelect}
+                            name="sort" id="lws-sort" className="w-full max-w-[150px] border-2 rounded-md text-gray-500">
+                            <option
+                                value="default"
+                            >Default</option>
                             <option value="newest">Newest</option>
-                            <option value="most_liked">Most Liked</option>
+                            <option
+
+                                value="most_liked">
+                                Most Liked         </option>
                         </select>
                     </div>
                     <div className="sidebar-content">
