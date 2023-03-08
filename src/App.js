@@ -8,6 +8,7 @@ import Home from './components/pages/Home';
 import VideoGrid from './components/pages/VideoGrid';
 import NavBar from './components/navBar/NavBar';
 import HomeTwo from './components/Mostliked/HomeTwo';
+import HomeThree from './components/Newest/HomeThree';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/hometwo" element={<HomeTwo />} />
+        <Route path="/newest" element={<HomeThree />} />
         <Route path="/blogs/:id" element={<VideoGrid />} />
       </Routes>
       {/* <HomeTwo></HomeTwo> */}

@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
+import { fetchnewPosts } from '../../features/newest/newPostsSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 const SideBar = () => {
     const [selectedOption, setSelectedOption] = useState('');
+    const dispatch = useDispatch()
     const navigate = useNavigate();
+    const { newPosts } = useSelector((state) => state.newPosts);
+    console.log(newPosts)
+    useEffect(() => {
+        dispatch(fetchnewPosts());
+    }, [dispatch]);
 
-    const handleClick = () => {
 
-    }
-    const handleClick2 = () => {
-        navigate('/home');
-
-    }
     function handleOptionSelect(event) {
         // event.preventDefault();
 
@@ -24,10 +26,10 @@ const SideBar = () => {
             navigate('/home');
         }
         if (event.target.value == "newest") {
-            navigate('/');
+            navigate('/newest');
         }
-        console.log(selectedOption)
-        console.log(event.target.value)
+        // console.log(selectedOption)
+        // console.log(event.target.value)
         // window.location.reload();
         // perform some action or update state based on the selected option
     }

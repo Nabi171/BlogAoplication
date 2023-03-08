@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const SingleLinkeCard = ({ like }) => {
-    // console.log(like)
-    const { id, title, description, image, likes, isSaved, createdAt, tags } = like;
+
+const SingleNewestCard = ({ newPost }) => {
+    const { id, title, description, image, likes, isSaved, createdAt, tags } = newPost;
     return (
         <div className="lws-card">
             <Link to={`/blogs/${id}`} >
@@ -25,4 +25,4 @@ const SingleLinkeCard = ({ like }) => {
     );
 };
 
-export default SingleLinkeCard;
+export default SingleNewestCard;
