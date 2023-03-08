@@ -1,16 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingleRelatedPost = ({ post }) => {
     const { id, title, description, image, likes, isSaved, createdAt, tags } = post;
     return (
         <div className="card">
-            <a href="post.html">
+            <Link to={`/blogs/${id}`} >
                 <img src={image} className="card-image" alt="" />
-            </a>
+            </Link>
             <div className="p-4">
-                <a href="post.html" className="text-lg post-title lws-RelatedPostTitle">
+                <Link to={`/blogs/${id}`} className="text-lg post-title lws-RelatedPostTitle">
                     {title}
-                </a>
+                </Link>
                 <div className="mb-0 tags">
                     <span>#{tags[0]},</span> <span>#{tags[1]},</span> <span>#{tags[2]}</span>
                 </div>
