@@ -1,7 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, incrementPayloadValueAndAddValue } from '../../features/LikeCounter/likesCounterSlice';
 
 const DetailPost = ({ post }) => {
     const { title, description, image, tags, likes, isSaved } = post;
+    // const dispatch = useDispatch();
+    // const [count, setCount] = useState(likes);
+    // const handleClik = () => {
+    //     // setCount(parseInt(likes) + 1);
+
+    //     const no = dispatch(increment(likes));
+
+    // }
+
+
+    const dispatch = useDispatch();
+    const [value, setValue] = useState(parseInt(likes));
+    console.log(value)
+    // const payloadValue = useSelector((state) => state.mySlice.payloadValue);
+
+    const handleAddValue = () => {
+        dispatch(incrementPayloadValueAndAddValue(parseInt(likes)));
+        setValue(value + 1)
+
+    };
+
+
     return (
         <main className="post">
             <img src={image} />
@@ -14,8 +38,10 @@ const DetailPost = ({ post }) => {
                 </div>
                 <div className="btn-group">
                     {/* <!-- handle like on button click --> */}
-                    <button className="like-btn" id="lws-singleLinks">
-                        <i className="fa-regular fa-thumbs-up"></i> {likes}
+                    <button className="like-btn" id="lws-singleLinks"
+                        onClick={handleAddValue}
+                    >
+                        <i className="fa-regular fa-thumbs-up"></i> {value}
                     </button>
                     {/* <!-- handle save on button click -->
           <!-- use ".active" className and "Saved" text  if a post is saved, other wise "Save" --> */}
